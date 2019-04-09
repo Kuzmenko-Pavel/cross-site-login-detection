@@ -1,371 +1,128 @@
 <!doctype html>
-<html class="no-js" lang="">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Your Social Media Fingerprint</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Without your consent most major web platforms leak whether you are logged in. This allows any website to detect on which platforms you're signed up. Since there are lots of platforms with specific demographics an attacker could reason about your personality, too.">
-    <meta property="image" content="https://robinlinus.github.io/socialmedia-leak/sml-logo-large.png?a=a" />
-    <meta property="author" content="Robin Linus" />
-    <meta property="og:title" content="Your Social Media Fingerprint" />
-    <meta property="og:image" content="https://robinlinus.github.io/socialmedia-leak/sml-logo-large.png?a=a" />
-    <meta property="og:image:url" content="https://robinlinus.github.io/socialmedia-leak/sml-logo-large.png?a=a" />
-    <meta property="og:site_name" content="Your Social Media Fingerprint" />
-    <meta property="og:type" content="article" />
-    <meta property="og:author" content="https://facebook.com/RobinLinus" />
-    <meta property="fb:pages" content="451189218422617" />
-    <meta property="fb:profile_id" content="451189218422617" />
-    <meta property="og:url" content="https://robinlinus.github.io/socialmedia-leak/" />
-    <meta property="fb:app_id" content="1527795287522439" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Your Social Media Fingerprint">
-    <meta name="twitter:image" content="https://robinlinus.github.io/socialmedia-leak/sml-logo-large.png?a=a" />
-    <meta name="twitter:description" content="Without your consent most major web platforms leak whether you are logged in. This allows any website to detect on which platforms you're signed up. Since there are lots of platforms with specific demographics an attacker could reason about your personality, too.">
-    <meta name="twitter:creator:id" content="4675481071">
-    <meta name="author" content="Robin Linus" />
-    <style type="text/css">
-    body {
-        background-color: rgb(246, 246, 239);
-        color: #030303;
-        padding-top: 24px;
-        margin: 0;
-        font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
-        font-size: 14px;
-    }
-    
-    h1 {
-        font-size: 34px;
-        font-weight: 400;
-        letter-spacing: -.01em;
-        line-height: 40px;
-    }
-    
-    h2 {
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 28px;
-    }
-    
-    h3 {
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 24px;
-    }
-    
-    h4 {
-        margin-bottom: 0;
-        margin-top: 24px;
-    }
-    
-    p {
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-        font-weight: 400;
-        line-height: 20px;
-    }
-    
-    ul {
-        line-height: 20px;
-    }
-    
-    .content {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 8px;
-    }
-    
-    section {
-        margin-top: 24px;
-    }
-    
-    a {
-        text-decoration: none;
-    }
-    
-    a:hover {
-        text-decoration: underline;
-    }
-    
-    .demo {
-        min-height: 480px;
-    }
-    
-    .demo h3 {
-        margin-top: 24px;
-        margin-bottom: 6px;
-    }
-    
-    .demo > span {
-        text-align: center;
-    }
-    
-    .network {
-        padding: 8px;
-        background: white;
-        margin: 4px;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        display: -webkit-inline-box;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-        width: 152px;
-    }
-    
-    .network img {
-        width: 24px;
-        height: 24px;
-        margin-right: 8px;
-    }
-    
-    .network {
-        color: #030303;
-        text-decoration: none !important;
-    }
-    
-    footer {
-        background: #424242;
-        margin-top: 64px;
-        padding: 16px;
-        font-size: 16px;
-        text-align: center;
-        font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-        color: white;
-        cursor: pointer;
-        margin-bottom: 49px;
-    }
-    
-    footer:hover {
-        text-decoration: underline;
-    }
-    
-    pre,
-    code {
-        white-space: pre-wrap;
-        white-space: -moz-pre-wrap;
-        white-space: -pre-wrap;
-        white-space: -o-pre-wrap;
-        word-wrap: break-word;
-    }
-    
-    @media only screen and (max-device-width: 480px) {
-        .content {
-            padding-top: 4px;
-        }
-        .network {
-            width: 128px;
-        }
-    }
-    </style>
-</head>
-
-<body>
-    <div class="content">
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Some Web Sites That You Might Be Logged In To</title>
+        <script src="index.js"></script>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
+    <body>
         <h1>Your Social Media Fingerprint</h1>
-        <section>
+        <p>
+            Without your consent most major web platforms leak whether you are logged in. This allows any website to detect on which platforms you're signed up. Since there are lots of platforms with specific demographics an attacker could reason about your personality, too.
+        </p>
+
+        <h2>Demonstration</h2>
+        <h3>You are logged in to:</h3>
+        <div id="loggedIn" class="services">
+        </div>
+        <h3>You are not logged in to:</h3>
+        <div id="notLoggedIn" class="services"></div>
+
+ <h2>Explanation</h2>
             <p>
-                Without your consent most major web platforms leak whether you are logged in. This allows any website to detect on which platforms you're signed up. Since there are lots of platforms with specific demographics an attacker could reason about your personality, too.
-            </p>
-            <p id="ff" style="display:none;">
-                Update: If you see broken images like this: <img src="https://facebook.com/favicon.ico" onload="document.getElementById('ff').remove()" onerror="document.getElementById('ff').style='display:block;'"> instead of a logo, the login detection won't work for this platforms because your browser is blocking requests to their domain. If you're using Firefox <a href="#updates">read the updates.</a>
-            </p>
-        </section>
-        <section class="demo">
-            <h2>Demonstration</h2>
-            <span>
-                <p>
-                    <h3>You are logged in to:</h3>
-                    <div id="loggedIn">
-                        <h2>No platform</h2>
-                        <p>(or maybe you've disabled third party cookies, or you are using something like Privacy Badger?)</p>
-                        <br><br><br>
-                    </div>
-                </p>
-                <p>
-                    <h3>You are not logged in to:</h3>
-                    <div id="notLoggedIn"></div>
-                </p>
-            </span>
-        </section>
-        <section>
-            <h2>Explanation</h2>
-            <p>
-                For most web platforms there's a way to abuse the login mechanism to detect whether a user is logged in to that service.
-                <br> Although this vulnerability is <a href="http://www.tomanthony.co.uk/blog/detect-visitor-social-networks/" target="_blank">well known</a> <a href="http://blog.jeremiahgrossman.com/2008/03/login-detection-whose-problem-is-it.html" target="_blank"> for several years</a> most companies <a href="http://webkay.robinlinus.com/clickjacking/redirect-statements.txt">won't fix it</a>.
+                For most web platforms there's a way to abuse the login mechanism to detect whether a user is logged in to that service. Although this vulnerability is <a href="http://www.tomanthony.co.uk/blog/detect-visitor-social-networks/" target="_blank">well known</a> <a href="http://blog.jeremiahgrossman.com/2008/03/login-detection-whose-problem-is-it.html" target="_blank"> for several years</a> most companies <a href="http://webkay.robinlinus.com/clickjacking/redirect-statements.txt">won't fix it</a>.
             </p>
             <p>
                 The exploit is pretty simple and actually easy to fix. Let's look at facebook.com to get an idea of how it works:
                 <h4>How does the login redirect mechanism work?</h4>
                 <br> At first we need to understand the login redirect mechanism. Say you're logged in and visit
             </p>
-            <pre><code>https://www.facebook.com/bookmarks/pages</code></pre>
+
+            <code>https://www.facebook.com/bookmarks/pages</code>
             <p>
                 Now if you open this URL in a private tab where you are not logged in, you will get redirected to the login screen with this URL:
             </p>
-            <pre><code>https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Fbookmarks%2Fpages</code></pre> Note the <code>next</code> parameter in the URL: <code>https%3A%2F%2Fwww.facebook.com%2Fbookmarks%2Fpages</code>.
+
+            <code>https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Fbookmarks%2Fpages</code>
+
             <p>
-                That's the URL we came from and it is used to redirect us back there once we've logged in.
-                <br>But if we enter the login URL in a browser tab where we are already logged in, we get redirected without getting prompted to login. Therefore this URL returns:
+                Note the <code>next</code> parameter in the URL: <code>https%3A%2F%2Fwww.facebook.com%2Fbookmarks%2Fpages</code>. That's the URL we came from and it is used to redirect us back there once we've logged in. But if we enter the login URL in a browser tab where we are already logged in, we get redirected without getting prompted to login. Therefore this URL returns:
+                <ul>
+                    <li>If logged in:&nbsp;&nbsp;&nbsp;the resource at the URL in the <code>next</code> parameter</li>
+                    <li>If logged out: the login screen</li>
+                </ul>
             </p>
-            <ul>
-                <li>If logged in:&nbsp;&nbsp;&nbsp;the resource at the URL in the <code>next</code> parameter</li>
-                <li>If logged out: the login screen</li>
-            </ul>
+
             <h4>Bypass the Same Origin Policy</h4>
-            <p>How does this URL help us? The Same Origin Policy prevents to read the results of this request from any other domain but https://facebook.com...
-                <br>Well, the SOP is strict for HTML pages, but it allows to receive images from other origins! So if the resource in the <code>next</code> parameter would be an image we could read it from our website. It can't be any image though. Facebook checks if the URL in the <code>next</code> parameter starts with <code>https://facebook.com</code>. So we need to find an image on facebook.com. Should be easy, right? Actually it isn't, because facebook hosts almost all images on their CDN servers under the domain <code>fbcdn.net</code>. Though there is one image that you can find on almost every webserver: the good old <code>favicon.ico</code>!
-                <br>This is how our login URL looks like with the favicon as <code>next</code> parameter:</p>
-            <pre><code>https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico</code></pre> It has a very <a target="_blank" href="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico">interesting property</a>:
-            <ul>
-                <li>Logged in:&nbsp;&nbsp;&nbsp;returns the favicon image</li>
-                <li>Logged out: returns the HTML of the login page</li>
-            </ul>
-            <p> We can use this URL in an <code>&lt;img&gt;</code> tag in our website:</p>
-            <pre><code>&lt;img src="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico"&gt;</code></pre> This <code>&lt;img&gt;</code> tag's property:
-            <ul>
-                <li>Logged in:&nbsp;&nbsp;&nbsp;receives the favicon image, will load it successfully, and the <code>onLoad</code> callback will be fired.</li>
-                <li>Logged out: receives the HTML of the login screen, will fail to load it as an image, and the <code>onError</code> callback will be fired.</li>
-            </ul>
-            This leads to the final exploit:
-            <pre><code>&lt;img onload="alert('logged in to fb')" onerror="alert('not logged in to fb')" src="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico"&gt;</code></pre>
+            <p>
+                How does this URL help us? The Same Origin Policy (SOP) prevents URLs from loading if they are from any domain other than https://facebook.com... Well, the SOP is strict for HTML pages, however, browsers do not apply it to images! So if the resource in the <code>next</code> parameter is an image, we could load it as a cross-origin request.
+            </p>
+
+            <p>
+                This is how our login URL looks like with the favicon as <code>next</code> parameter:
+            </p>
+
+            <code>https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico</code>
+
+            <p>
+                It has a very <a target="_blank" href="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico">interesting property</a>:
+                <ul>
+                    <li>Logged in:&nbsp;&nbsp;&nbsp;returns the favicon image</li>
+                    <li>Logged out: returns the HTML of the login page</li>
+                </ul>
+                We can use this URL in an <code>&lt;img&gt;</code> tag in our website:
+            </p>
+
+            <code>&lt;img src="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico"&gt;</code>
+
+            <p>
+                This <code>&lt;img&gt;</code> tag's property:
+                <ul>
+                    <li>Logged in:&nbsp;&nbsp;&nbsp;receives the favicon image, will load it successfully, and the <code>onLoad</code> callback will be fired.</li>
+                    <li>Logged out: receives the HTML of the login screen, will fail to load it as an image, and the <code>onError</code> callback will be fired.</li>
+                </ul>
+                This leads to the final exploit:
+
+                <code>&lt;img onload="alert('logged in to fb')" onerror="alert('not logged in to fb')"
+                src="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico"&gt;</code>
+            </p>
+
             <h4>Other Platforms</h4>
             <p>
                 This mechanism works for almost all major web platforms, because they all have a redirect parameter in their login endpoint and they need to host their favicon on their domain (<a target="_blank" href="https://en.wikipedia.org/wiki/Favicon#Limitations_and_criticism">bc of browser compatibility, and of the technical debt of the former lack of standards</a>).
             </p>
+
             <h4 id="updates">Updates</h4>
             <p>
                 <ul>
                     <li>2016/10/07: Instagram removed the favicon from their root domain and host their favicon on their CDN now.</li>
                     <li>2016/10/14: <a target="_blank" href="http://meta.stackoverflow.com/questions/336225/so-should-stop-leaking-information-to-other-websites-about-whether-we-are-logged"> Stackoverflow has fixed the issue.</a></li>
-                    <li>2016/10/14: It looks like Firefox has fixed the issue at least for the major networks with their <a target="_blank" href="https://developer.mozilla.org/en-US/Firefox/Privacy/Tracking_Protection">default tracking protection blacklist</a> (The blacklist comes from <a target="_blank" href="https://disconnect.me/">https://disconnect.me/</a>). 
-                        <br>
-                        <br>Console screenshot of the errors when visting socialmedia-leak with current Firefox:
-                        <a target="_blank" href="firefox.png"><img src="firefox.png" style="width:100%"></a>
-                        Though it probably still works for all platforms where you don't see a broken image <img src="a"> instead of a logo.  
-                    </li>
                     <li>2016/10/14: Netflix now just redirects to the main browse page regardless of the redirect in the URL.</li>
                     <li>2017/11/29: Flickr <a target="_blank" href="https://github.com/RobinLinus/socialmedia-leak/issues/26">has fixed</a> the issue, too.</li>
                 </ul>
             </p>
-            </p>
-        </section>
-        <section>
+
+
             <h2>Further Attacks</h2>
             <p>
                 This attack could be a step of a worse attack such as <a target="_blank" href="https://0xsobky.github.io/novel-deanonymization-techniques/">deanonymization techniques</a>, <a target="_blank" href="https://en.wikipedia.org/wiki/Clickjacking">Clickjacking</a>, <a target="_blank" href="http://sakurity.com/blog/2015/03/10/Profilejacking.html">Profilejacking</a>, or <a target="_blank" href="https://en.wikipedia.org/wiki/Phishing">Phishing</a> where it is crucial to know if a victim is logged in to a service.
             </p>
-        </section>
-        <section>
+
             <h2>Protection</h2>
             <p>First of all: <a href="https://www.google.com/search?q=third+party+cookies&oq=third+party+cookies" target="_blank">disable third party cookies.</a></p>
             <p>You can also install a browser plugin like <a href="https://www.google.com/search?q=privacy+badger" target="_blank">Privacy Badger</a>, or <a href="https://www.google.com/search?q=umatrix" target="_blank">uMatrix</a> to protect yourself from this attack.</p>
             <p>
                 For further information see the <a href="https://news.ycombinator.com/item?id=12692190" target="blank" rel="noreferrer">discussion on Hackernews</a> or this <a href="https://www.reddit.com/r/programming/comments/5741xk/your_social_media_fingerprint/" target="blank" rel="noreferrer">discussion on Reddit</a>.
             </p>
-        </section>
-        <section>
+
             <h2>Help to solve the issue!</h2>
             <p>
                 The companies won't fix the issue, because the risk for their own service is relatively low. Though so many platforms are vulnerable to this, it becomes a real privacy issue. Please help to raise awareness to push the companies to fix the issue.
+
+                <ul>
+                    <li><a target="_blank" href="https://twitter.com/home?status=https%3A//robinlinus.github.io/socialmedia-leak">Share this demo on Twitter</a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//robinlinus.github.io/socialmedia-leak">Share this demo on Facebook</a></li>
+                    <li><a target="_blank" href="https://plus.google.com/share?url=https%3A//robinlinus.github.io/socialmedia-leak">Share this demo on Google+</a></li>
+                    <li><a data-action="share/whatsapp/share" href="whatsapp://send?text=https://robinlinus.github.io/socialmedia-leak" data-action="share/whatsapp/share">Share this demo via Whatsapp</a></li>
+                    <li><a target="_blank" href="https://github.com/RobinLinus/socialmedia-leak">Star this project on Github</a></li>
+                </ul>
+                If you find more web platforms that are vulnerable to this attack, <a href="https://github.com/RobinLinus/socialmedia-leak/issues">please file an issue to add it.</a> The more complete this list is, the bigger the issue and the higher the pressure for platforms to fix it.
             </p>
-            <ul>
-                <li><a target="_blank" href="https://twitter.com/home?status=https%3A//robinlinus.github.io/socialmedia-leak">Share this demo on Twitter</a></li>
-                <li><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//robinlinus.github.io/socialmedia-leak">Share this demo on Facebook</a></li>
-                <li><a target="_blank" href="https://plus.google.com/share?url=https%3A//robinlinus.github.io/socialmedia-leak">Share this demo on Google+</a></li>
-                <li><a data-action="share/whatsapp/share" href="whatsapp://send?text=https://robinlinus.github.io/socialmedia-leak" data-action="share/whatsapp/share">Share this demo via Whatsapp</a></li>
-                <li><a target="_blank" href="https://github.com/RobinLinus/socialmedia-leak">Star this project on Github</a></li>
-            </ul>
-            <p>If you find more web platforms that are vulnerable to this attack, <a href="https://github.com/RobinLinus/socialmedia-leak/issues">please file an issue to add it.</a> The more complete this list is, the bigger the issue and the higher the pressure for platforms to fix it.
-            </p>
-        </section>
-        <section id="ads">
-            <br>
-            <br>
-            <br>
-            <br>
-            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" onerror="document.querySelector('#ads').remove()"></script>
-            <!-- WebSecQuiz -->
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9914824802194583" data-ad-slot="1912010157" data-ad-format="auto"></ins>
-            <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-            <br>
-            <br>
-            <br>
-            <br>
-        </section>
 
 
-        <section>
-            <h3>If you like this page maybe you like my other works, too:</h3>
-            <ul>
-                <li><a target="_blank" href="https://snapdrop.net"><b>Snapdrop:</b> Instantly share files with devices nearby. No Setup, No Signup.</a></li>
-                <li><a target="_blank" href="http://webkay.robinlinus.com"><b>Webkay:</b> A demonstration of all the personal information your browser is leaking.</a></li>
-                <li><a target="_blank" href="http://ubercookie.robinlinus.com"><b>Ubercookie:</b> An irrevocable persistent browser cookie.</a></li>
-                <li><a target="_blank" href="https://websecurity.firebaseapp.com"><b>Web Security Quiz:</b> Test your knowledge with OWASP exam questions</a></li>
-                <li><a target="_blank" href="http://capira.de"><b>Capira:</b> Interactive Learning Videos</a></li>
-                <li><a target="_blank" href="https://www.facebook.com/RobinLinus"><b>Facebook:</b> Like my page to get updates about the stuff I create</a></li>
-                <li><a target="_blank" href="https://twitter.com/robin_linus"><b>Twitter:</b> Follow me on Twitter to get updates about the stuff I create</a></li>
-            </ul>
-        </section>
-</div>
-    <script src="demo.js"></script>
-    <script>
-    var isFirstLoggedIn = true;
-
-    function displayResult(network, loggedIn) {
-        var id = loggedIn ? 'loggedIn' : 'notLoggedIn';
-        var favicon = faviconUri(network);
-        var url = network.domain + network.redirect;
-        var el = '<a target="_blank" href="' + url + '" target="_blank" class=network><img src=' + favicon + '><span>' + network.name + '</span></a>';
-        if (loggedIn && isFirstLoggedIn) {
-            isFirstLoggedIn = false;
-            document.getElementById(id).innerHTML = el;
-        } else {
-            document.getElementById(id).innerHTML += el;
-        }
-    }
-    leakSocialMediaAccounts(displayResult);
-
-    function faviconUri(network) {
-        var favicon = network.domain + '/favicon.ico';
-        if (network.name === 'Dropbox') {
-            favicon = 'https://www.dropbox.com/static/images/favicon.ico';
-        }
-        if (network.name === 'Youtube') {
-            favicon = 'https://www.youtube.com/favicon.ico';
-        }
-        if (network.name === 'Gmail') {
-            favicon = 'https://mail.google.com/favicon.ico';
-        }
-        return favicon;
-    }
-    </script>
-    <script>
-    (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-85165266-1', 'auto');
-    ga('send', 'pageview');
-    </script>
-    <a href="https://robinlinus.github.io" target="_blank" id="about">
-        <footer>
-            Built with ♥ by Robin Linus
-        </footer>
-    </a>
-    <iframe style="position:fixed;bottom:0;" src="https://robinlinus.github.io/share-the-love/#msg=Your Social Media Fingerprint&url=https://robinlinus.github.io/socialmedia-leak&paypal=robin@capira.de&twitter=robin_linus&bitcoin=176s9TkKmAFdL5gP36u9VZym9zPVVEcFo9" height="50" width="100%" frameborder="0"></iframe>
-</body>
-
+        <h3>This is a modified version of code from Robin Linus:</h3>
+        https://robinlinus.github.io/socialmedia-leak/
+    </body>
 </html>
