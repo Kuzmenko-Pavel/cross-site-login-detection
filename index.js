@@ -1,5 +1,5 @@
-var leakSocialMediaAccounts = function(callback) {
-    var platforms = [{
+{
+    let webSites = [{
         domain: "https://squareup.com",
         redirect: "/login?return_to=%2Ffavicon.ico",
         name: "Square"
@@ -137,57 +137,59 @@ var leakSocialMediaAccounts = function(callback) {
         name: "VK"
     }];
 
-    platforms.forEach(function(network) {
+
+
+    function findLoginStatus(site)
+    {
         var img = document.createElement('img');
-        img.referrerPolicy = 'no-referrer';
-        img.src = network.domain + network.redirect;
+        img.src = site.domain + site.redirect;
+
         img.onload = function() {
-            callback(network, true);
+            displayResult(site, true);
         };
+
         img.onerror = function() {
-            callback(network, false);
+            displayResult(site, false);
         };
-    });
-};
+    }
 
 
+    function displayResult(site, loggedIn) {
+        var id = loggedIn ? 'loggedIn' : 'notLoggedIn';
+        var favicon = faviconUri(site);
+        var url = site.domain + site.redirect;
+        var el = `<a href="${url}" rel="noreferrer"><img src="${favicon}">${site.name}</a>`;
+        document.getElementById(id).innerHTML += el;
+    }
 
-// Do not work (anymore)
-// {
-//     url: "https://login.live.com/login.srf?wa=wsignin1.0&wreply=https%3A%2F%2Fprofile.microsoft.com%2FregsysProfilecenter%2FImages%2FLogin.jpg",
-//     name: "Microsoft"
-// }, {
-//     url: "https://slack.com/signin?redir=%2Ffavicon.ico",
-//     name: "Slack"
-// }, {
-//     url: "https://tablet.www.linkedin.com/splash?redirect_url=https%3A%2F%2Fwww.linkedin.com%2Ffavicon.ico%3Fgid%3D54384%26trk%3Dfulpro_grplogo",
-//     name: "Linkedin"
-// }, {
-//      domain: "https://subscribe.washingtonpost.com/loginregistration/index.html#/register/group/default?action=login&destination=https:%2F%2Fwashingtonpost.com%2Ffavicon.ico",
-//      redirect: "/login/?previous=/favicon.ico",
-//      name: "Washington Post"
-// }, {
-//      domain: "https://www.instagram.com",
-//      redirect: "/accounts/login/?next=%2Ffavicon.ico",
-//      name: "Instagram"
-//  },{
-//     domain: "https://www.spiegel.de",
-//     redirect: "/meinspiegel/login.html?backUrl=%2Ffavicon.ico",
-//     name: "Spiegel Online"
-// },{
-//     domain: "http://www.youporn.com",
-//     redirect: "/login/?previous=/favicon.ico",
-//     name: "YouPorn"
-// },{
-//     domain: "https://stackoverflow.com",
-//     redirect: "/users/login?ssrc=head&returnurl=http%3a%2f%2fstackoverflow.com%2ffavicon.ico",
-//     name: "Stack Overflow"
-// },{
-//     domain: "https://www.netflix.com",
-//     redirect: "/Login?nextpage=%2Ffavicon.ico",
-//     name: "Netflix"
-// },{
-//      domain: "https://www.flickr.com",
-//      redirect: "/signin/yahoo/?redir=https%3A%2F%2Fwww.flickr.com/favicon.ico",
-//      name: "Flickr"
-//   }
+
+    function faviconUri(site) {
+        iconUrls = {
+            'Dropbox': 'https://www.dropbox.com/static/images/favicon.ico',
+            'Youtube': 'https://www.dropbox.com/static/images/favicon.ico',
+            'Gmail': 'https://mail.google.com/favicon.ico',
+            'Meetup':'https://www.meetup.com/mu_static/en-US/a68780390bd4c53c3a45256d4f52178c.ico',
+            'Battle.net': 'https://eu.blizzard.com/static/_images/favicon.ico',
+            'Paypal':'https://www.paypalobjects.com/favicon.ico',
+        }
+
+        favicon = iconUrls[site.name];
+
+        if (!favicon)
+            favicon = site.domain + '/favicon.ico';
+
+        return favicon;
+    }
+
+
+    function checkwebSites() {
+        webSites.forEach(site => findLoginStatus(site));
+    };
+
+}
+
+
+window.onload = function ()
+{
+    checkwebSites();
+}
