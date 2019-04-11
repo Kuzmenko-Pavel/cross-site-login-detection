@@ -1,7 +1,7 @@
 Your Social Media Fingerprint
 =============================
 
-Most major web platforms have a security vulnerability that involves the detection of logins. The vulnerability allows any random web site to determine that you have accounts at various other web sites. Because most people have multiple accounts and because there are lots of platforms with non-random demographics, the vulnerability could be used to infer personal details about you. Moreover, it could be used en mass to build databases such as those being used by the many companies that track people online.
+Most major web platforms have a security vulnerability that discloses the existence of an account. The vulnerability allows any random web site to establish that users have accounts at various other web sites. Because most people have multiple accounts and because there are lots of platforms with non-random userbase demographics, the vulnerability could be used to infer personal details about users. Moreover, it could be exploited en mass to build databases such as those being used by the many companies that track people online.
 
 Demonstration
 -------------
