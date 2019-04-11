@@ -16,7 +16,7 @@ Open up ``index.html`` in your browser. This page will scan 34 web sites and tel
 Basic Principles
 ------------------
 
-Web sites that maintain user accounts often have a login ULR that allows redirection after login. The redirection, though, behaves differently depending on whether or not a user is logged in.  For example, if a Facebook user is not logged in and they attempt to visit a non-public page, Facebook will redirect them to the login URL shown below.
+Web sites that maintain user accounts often have a login URL that allows redirection after login. The redirection, though, behaves differently depending on whether or not a user is logged in.  For example, if a Facebook user is not logged in and they attempt to visit a non-public page, Facebook will redirect them to the login URL shown below.
 
 ::
 
