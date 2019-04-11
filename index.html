@@ -3,128 +3,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Some Web Sites That You Might Be Logged In To</title>
-        <script src="index.js"></script>
         <link rel="stylesheet" type="text/css" href="index.css">
+        <title>Your Social Media Fingerprint</title>
+        <script src="index.js"></script>
+
     </head>
     <body>
         <h1>Your Social Media Fingerprint</h1>
-        <p>
-            Without your consent most major web platforms leak whether you are logged in. This allows any website to detect on which platforms you're signed up. Since there are lots of platforms with specific demographics an attacker could reason about your personality, too.
-        </p>
-
-        <h2>Demonstration</h2>
 
         <h3>You are logged in to:</h3>
         <div id="loggedIn" class="services"></div>
 
         <h3>You are not logged in to:</h3>
         <div id="notLoggedIn" class="services"></div>
-
-        <h2>Explanation</h2>
-
-            <p>
-                For most web platforms there's a way to abuse the login mechanism to detect whether a user is logged in to that service. Although this vulnerability is <a href="http://www.tomanthony.co.uk/blog/detect-visitor-social-networks/" target="_blank" rel="noopener noreferrer">well known</a> <a href="http://blog.jeremiahgrossman.com/2008/03/login-detection-whose-problem-is-it.html" target="_blank" rel="noopener noreferrer"> for several years</a> most companies <a href="http://webkay.robinlinus.com/clickjacking/redirect-statements.txt">won't fix it</a>.
-            </p>
-            <p>
-                The exploit is pretty simple and actually easy to fix. Let's look at facebook.com to get an idea of how it works:
-                <h4>How does the login redirect mechanism work?</h4>
-                <br> At first we need to understand the login redirect mechanism. Say you're logged in and visit
-            </p>
-
-            <code>https://www.facebook.com/bookmarks/pages</code>
-            <p>
-                Now if you open this URL in a private tab where you are not logged in, you will get redirected to the login screen with this URL:
-            </p>
-
-            <code>https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Fbookmarks%2Fpages</code>
-
-            <p>
-                Note the <code>next</code> parameter in the URL: <code>https%3A%2F%2Fwww.facebook.com%2Fbookmarks%2Fpages</code>. That's the URL we came from and it is used to redirect us back there once we've logged in. But if we enter the login URL in a browser tab where we are already logged in, we get redirected without getting prompted to login. Therefore this URL returns:
-                <ul>
-                    <li>If logged in:&nbsp;&nbsp;&nbsp;the resource at the URL in the <code>next</code> parameter</li>
-                    <li>If logged out: the login screen</li>
-                </ul>
-            </p>
-
-            <h4>Bypass the Same Origin Policy</h4>
-            <p>
-                How does this URL help us? The Same Origin Policy (SOP) prevents URLs from loading if they are from any domain other than https://facebook.com... Well, the SOP is strict for HTML pages, however, browsers do not apply it to images! So if the resource in the <code>next</code> parameter is an image, we could load it as a cross-origin request.
-            </p>
-
-            <p>
-                This is how our login URL looks like with the favicon as <code>next</code> parameter:
-            </p>
-
-            <code>https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico</code>
-
-            <p>
-                It has a very <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico">interesting property</a>:
-                <ul>
-                    <li>Logged in:&nbsp;&nbsp;&nbsp;returns the favicon image</li>
-                    <li>Logged out: returns the HTML of the login page</li>
-                </ul>
-                We can use this URL in an <code>&lt;img&gt;</code> tag in our website:
-            </p>
-
-            <code>&lt;img src="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico"&gt;</code>
-
-            <p>
-                This <code>&lt;img&gt;</code> tag's property:
-                <ul>
-                    <li>Logged in:&nbsp;&nbsp;&nbsp;receives the favicon image, will load it successfully, and the <code>onLoad</code> callback will be fired.</li>
-                    <li>Logged out: receives the HTML of the login screen, will fail to load it as an image, and the <code>onError</code> callback will be fired.</li>
-                </ul>
-                This leads to the final exploit:
-
-                <code>&lt;img onload="alert('logged in to fb')" onerror="alert('not logged in to fb')"
-                src="https://www.facebook.com/login.php?next=https%3A%2F%2Fwww.facebook.com%2Ffavicon.ico"&gt;</code>
-            </p>
-
-            <h4>Other Platforms</h4>
-            <p>
-                This mechanism works for almost all major web platforms, because they all have a redirect parameter in their login endpoint and they need to host their favicon on their domain (<a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Favicon#Limitations_and_criticism">bc of browser compatibility, and of the technical debt of the former lack of standards</a>).
-            </p>
-
-            <h4 id="updates">Updates</h4>
-            <p>
-                <ul>
-                    <li>2016/10/07: Instagram removed the favicon from their root domain and host their favicon on their CDN now.</li>
-                    <li>2016/10/14: <a target="_blank" rel="noopener noreferrer" href="http://meta.stackoverflow.com/questions/336225/so-should-stop-leaking-information-to-other-websites-about-whether-we-are-logged"> Stackoverflow has fixed the issue.</a></li>
-                    <li>2016/10/14: Netflix now just redirects to the main browse page regardless of the redirect in the URL.</li>
-                    <li>2017/11/29: Flickr <a target="_blank" rel="noopener noreferrer" href="https://github.com/RobinLinus/socialmedia-leak/issues/26">has fixed</a> the issue, too.</li>
-                </ul>
-            </p>
-
-
-            <h2>Further Attacks</h2>
-            <p>
-                This attack could be a step of a worse attack such as <a target="_blank" rel="noopener noreferrer" href="https://0xsobky.github.io/novel-deanonymization-techniques/">deanonymization techniques</a>, <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Clickjacking">Clickjacking</a>, <a target="_blank" rel="noopener noreferrer" href="http://sakurity.com/blog/2015/03/10/Profilejacking.html">Profilejacking</a>, or <a target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Phishing">Phishing</a> where it is crucial to know if a victim is logged in to a service.
-            </p>
-
-            <h2>Protection</h2>
-            <p>
-                First of all: <a href="https://www.google.com/search?q=third+party+cookies&oq=third+party+cookies" target="_blank" rel="noopener noreferrer">disable third party cookies.</a>
-            </p>
-
-            <p>You can also install a browser plugin like <a href="https://www.google.com/search?q=privacy+badger" target="_blank" rel="noopener noreferrer">Privacy Badger</a>, or <a href="https://www.google.com/search?q=umatrix" target="_blank" rel="noopener noreferrer">uMatrix</a> to protect yourself from this attack.</p>
-            <p>
-                For further information see the <a href="https://news.ycombinator.com/item?id=12692190" target="_blank" rel="noopener noreferrer">discussion on Hackernews</a> or this <a href="https://www.reddit.com/r/programming/comments/5741xk/your_social_media_fingerprint/" target="_blank" rel="noopener noreferrer">discussion on Reddit</a>.
-            </p>
-
-            <h2>Help to solve the issue!</h2>
-            <p>
-                The companies won't fix the issue, because the risk for their own service is relatively low. Though so many platforms are vulnerable to this, it becomes a real privacy issue. Please help to raise awareness to push the companies to fix the issue.
-
-                <ul>
-                    <li><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/home?status=https%3A//robinlinus.github.io/socialmedia-leak">Share this demo on Twitter</a></li>
-                    <li><a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//robinlinus.github.io/socialmedia-leak">Share this demo on Facebook</a></li>
-                    <li><a target="_blank" rel="noopener noreferrer" href="https://plus.google.com/share?url=https%3A//robinlinus.github.io/socialmedia-leak">Share this demo on Google+</a></li>
-                    <li><a data-action="share/whatsapp/share" href="whatsapp://send?text=https://robinlinus.github.io/socialmedia-leak" data-action="share/whatsapp/share">Share this demo via Whatsapp</a></li>
-                    <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/RobinLinus/socialmedia-leak">Star this project on Github</a></li>
-                </ul>
-                If you find more web platforms that are vulnerable to this attack, <a href="https://github.com/RobinLinus/socialmedia-leak/issues">please file an issue to add it.</a> The more complete this list is, the bigger the issue and the higher the pressure for platforms to fix it.
-            </p>
-
     </body>
 </html>
