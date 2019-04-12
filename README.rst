@@ -1,7 +1,7 @@
 Cross-Site Login Detection
 =============================
 
-Numerous major web sites have a security vulnerability that discloses the existence of an account. The vulnerability allows any random web site to establish that users have accounts at various other web sites. Because most people have accounts at multiple web sites and because there are lots of web sites with non-random userbase demographics, the vulnerability could be used to infer personal details about users. Moreover, it could be exploited en mass to build databases such as those being used by the many companies that track people online.
+Numerous major web sites have a security vulnerability that discloses the existence of an account. The vulnerability allows any random web site to establish that users have accounts at various other web sites. Because most people have accounts at multiple web sites and because all web sites have non-random userbase demographics, the vulnerability could be used to infer personal details about users. Moreover, it could be exploited en mass to build databases such as those being used by the many companies that track people online.
 
 Demonstration
 -------------
@@ -29,7 +29,7 @@ This type of login URL allows redirected cross-site requests. When a request suc
 
 Additional Technical Details
 ----------------------------
-Modern browsers block many types of cross-site requests. This is known as the Same Origin Policy (SOP). Browsers, however, do not apply SOP to all requests. For example, images, CSS, JavaScript, and fonts are not blocked. The same goes for media enclosed in ``<video>`` and ``<audio>`` tags. Server responses with certain CORS headers are also not subject to SOP. Many sites also use rudimentary validation of the redirect URL. That is, they ensure that the URL is not an open redirect. None the less, validation is often rudimentary.
+Modern browsers block many types of cross-site requests. This is known as the Same Origin Policy (SOP). Browsers, however, do not apply SOP to all requests. For example, images, CSS, JavaScript, and fonts are not blocked. The same goes for media enclosed in ``<video>`` and ``<audio>`` tags. Server responses with certain CORS headers are also not subject to SOP. While many sites do validate redirect URLs, it is usually not sufficient to prevent the vulnerability.
 
 This attack can often be carried out by crafting a URL that redirects to the target web site's favicon image. For example:
 
