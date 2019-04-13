@@ -5,11 +5,11 @@ Numerous major web sites have a security vulnerability that discloses the existe
 
 Demonstration
 -------------
-Clone this repo
+Either manually download the three index files, or clone this repo
 
 ::
 
-    git clone https://github.com/abstract-theory/socialmedia-leak.git
+    git clone https://github.com/abstract-theory/cross-site-login-detection.git
 
 Open up ``index.html`` in your browser. This page will scan 34 web sites and list them as either logged in or not logged in.
 
@@ -24,12 +24,12 @@ Web sites that maintain user accounts often have a login URL that allows redirec
 
 At this URL, the user will be prompted for login credentials. However, if a logged in user visits this URL, they will be redirected to the non-public page specified in the URL argument.
 
-This type of login URL allows redirected cross-site requests. When a request succeeds, it means the user is logged in. When it fails, then they are not logged in.
+This type of login URL allows redirected cross-site requests. When such a request succeeds, it confirms the existance of an account.
 
 
 Additional Technical Details
 ----------------------------
-Modern browsers block many types of cross-site requests. This is known as the Same Origin Policy (SOP). Browsers, however, do not apply SOP to all requests. For example, images, CSS, JavaScript, and fonts are not blocked. The same goes for media enclosed in ``<video>`` and ``<audio>`` tags. Server responses with certain CORS headers are also not subject to SOP. While many sites do validate redirect URLs, it is usually not sufficient to prevent the vulnerability.
+Modern browsers block many types of cross-site requests. This is known as the Same Origin Policy (SOP). Browsers, however, do not apply SOP to all requests. For example, images, CSS, JavaScript, and fonts are not blocked. The same goes for media enclosed in ``<video>`` and ``<audio>`` tags. Server responses with certain CORS headers are also not subject to SOP. While many sites do validate redirect URLs, the validation is usually not sufficiently restrictive.
 
 This attack can often be carried out by crafting a URL that redirects to the target web site's favicon image. For example:
 
