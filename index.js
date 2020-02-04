@@ -32,7 +32,8 @@ let webSites = {
     "Meetup": "https://secure.meetup.com/login/?returnUri=https%3A%2F%2Fwww.meetup.com%2Fimg%2Fajax_loader_trans.gif",
     "BitBucket": "https://bitbucket.org/account/signin/?next=/favicon.ico",
     "Indeed": "https://secure.indeed.com/account/login?continue=%2ffavicon.ico",
-    "VK": "https://vk.com/login?u=2&to=ZmF2aWNvbi5pY28-"
+    "VK": "https://vk.com/login?u=2&to=ZmF2aWNvbi5pY28-",
+    "Yandex": "https://mail.yandex.ru/?retpath=https://mail.yandex.ru/favicon.ico?666"
 };
 
 function findLoginStatus(name, url) {
