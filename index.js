@@ -36,7 +36,7 @@ let webSites = {
 };
 
 function findLoginStatus(name, url) {
-    var img = document.createElement('img');
+    let img = document.createElement('img');
     img.src = url;
     img.onload = function() {
         displayResult(name, url, 'loggedIn');
@@ -47,21 +47,22 @@ function findLoginStatus(name, url) {
 }
 
 function displayResult(name, url, id) {
-    var favicon = faviconUri(name, url);
-    var el = `<a href="${url}" rel="noreferrer"><img src="${favicon}">${name}</a>`;
+    let favicon = faviconUri(name, url);
+    let el = `<a href="${url}" rel="noreferrer"><img src="${favicon}">${name}</a>`;
     document.getElementById(id).innerHTML += el;
 }
 
 function faviconUri(name, url) {
-    iconUrls = {
+    let re;
+    let iconUrls = {
         'Dropbox': 'https://www.dropbox.com/static/images/favicon.ico',
         'Youtube': 'https://www.dropbox.com/static/images/favicon.ico',
         'Gmail': 'https://mail.google.com/favicon.ico',
         'Meetup':'https://www.meetup.com/mu_static/en-US/a68780390bd4c53c3a45256d4f52178c.ico',
         'Battle.net': 'https://eu.blizzard.com/static/_images/favicon.ico',
         'Paypal':'https://www.paypalobjects.com/favicon.ico',
-    }
-    favicon = iconUrls[name];
+    };
+    let favicon = iconUrls[name];
     if (!favicon) {
         re = /^(https:\/\/[^\/]+)\/.*/i;
         favicon = url.replace(re, "$1/favicon.ico");
@@ -70,10 +71,11 @@ function faviconUri(name, url) {
 }
 
 function checkwebSites() {
+    let name;
     for (name in webSites)
         findLoginStatus(name, webSites[name]);
-};
+}
 
 window.onload = function () {
     checkwebSites();
-}
+};
